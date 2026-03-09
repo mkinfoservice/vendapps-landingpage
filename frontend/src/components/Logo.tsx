@@ -29,17 +29,17 @@ export function Logo({ size = 40, withWordmark = true, className = '' }: LogoPro
     <a
       href="#"
       onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-      className={`flex items-center gap-2.5 cursor-pointer select-none ${className}`}
+      className={`flex items-center cursor-pointer select-none ${className}`}
       aria-label="vendApps — voltar ao início"
     >
       <img
         src="/logo-icon.png"
         alt="vendApps logo"
-        style={{ width: size, height: size, objectFit: 'contain' }}
+        style={{ width: size, height: size, objectFit: 'contain', marginRight: `-${Math.round(size * 0.18)}px` }}
       />
 
       {withWordmark && (
-        <span className="text-xl font-bold tracking-tight leading-none">
+        <span className="text-4xl font-bold tracking-tight leading-none self-center">
           <span className="gradient-text">vend</span>
           <span className="text-text-primary">Apps</span>
         </span>
