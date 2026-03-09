@@ -32,13 +32,11 @@ export function Logo({ size = 40, withWordmark = true, className = '' }: LogoPro
       className={`flex items-center gap-2.5 cursor-pointer select-none ${className}`}
       aria-label="vendApps — voltar ao início"
     >
-      {/* Placeholder — substituir pelo ícone SVG final */}
-      <div
-        style={{ width: size, height: size }}
-        className="rounded-xl bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center text-brand-primary text-xs font-bold"
-      >
-        V
-      </div>
+      <img
+        src="/logo-icon.png"
+        alt="vendApps logo"
+        style={{ width: size, height: size, objectFit: 'contain' }}
+      />
 
       {withWordmark && (
         <span className="text-xl font-bold tracking-tight leading-none">
