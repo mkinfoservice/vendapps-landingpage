@@ -1,3 +1,7 @@
+import { useState } from 'react'
+
+const WEB3FORMS_KEY = '14941864-c768-4c27-8764-7d28c080e897'
+
 const stats = [
   { value: 'Alpha', label: 'Fase atual' },
   { value: '100%', label: 'Focado em operação real' },
@@ -5,7 +9,48 @@ const stats = [
   { value: 'WhatsApp', label: 'API oficial integrada' },
 ]
 
+type Status = 'idle' | 'loading' | 'success' | 'error'
+
 export function CtaFinal() {
+  const [status, setStatus] = useState<Status>('idle')
+  const [form, setForm] = useState({ name: '', company: '', phone: '', email: '' })
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('loading')
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Nova inscrição alpha — ${form.name} (${form.company})`,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.company,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setStatus('success')
+        setForm({ name: '', company: '', phone: '', email: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const inputClass =
+    'w-full px-3.5 py-2.5 rounded-xl bg-surface-bg/60 border border-surface-border/60 text-text-primary text-sm placeholder:text-text-secondary/40 focus:outline-none focus:border-brand-primary/60 transition-colors'
+
   return (
     <section id="alpha" className="relative py-24 overflow-hidden">
 
@@ -46,55 +91,96 @@ export function CtaFinal() {
 
         {/* Form */}
         <div className="max-w-lg mx-auto bg-surface-card/50 border border-surface-border/60 rounded-2xl p-6 sm:p-8 mb-12 backdrop-blur-sm">
-          <h3 className="text-lg font-semibold text-text-primary mb-1">Quero participar do alpha</h3>
-          <p className="text-sm text-text-secondary mb-6">Preencha e entraremos em contato em breve.</p>
 
-          <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs text-text-secondary mb-1.5">Nome</label>
-                <input
-                  type="text"
-                  placeholder="Seu nome"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-surface-bg/60 border border-surface-border/60 text-text-primary text-sm placeholder:text-text-secondary/40 focus:outline-none focus:border-brand-primary/60 transition-colors"
-                />
+          {status === 'success' ? (
+            <div className="py-8 flex flex-col items-center gap-4">
+              <div className="w-14 h-14 rounded-full bg-brand-accent/20 border border-brand-accent/40 flex items-center justify-center">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 13l4 4L19 7" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </div>
               <div>
-                <label className="block text-xs text-text-secondary mb-1.5">Empresa</label>
-                <input
-                  type="text"
-                  placeholder="Nome do negócio"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-surface-bg/60 border border-surface-border/60 text-text-primary text-sm placeholder:text-text-secondary/40 focus:outline-none focus:border-brand-primary/60 transition-colors"
-                />
+                <h3 className="text-lg font-semibold text-text-primary mb-1">Inscrição recebida!</h3>
+                <p className="text-sm text-text-secondary">Entraremos em contato em breve pelo WhatsApp ou e-mail informado.</p>
               </div>
             </div>
-            <div>
-              <label className="block text-xs text-text-secondary mb-1.5">WhatsApp</label>
-              <input
-                type="tel"
-                placeholder="(11) 99999-9999"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-bg/60 border border-surface-border/60 text-text-primary text-sm placeholder:text-text-secondary/40 focus:outline-none focus:border-brand-primary/60 transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-xs text-text-secondary mb-1.5">E-mail</label>
-              <input
-                type="email"
-                placeholder="seu@email.com"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-surface-bg/60 border border-surface-border/60 text-text-primary text-sm placeholder:text-text-secondary/40 focus:outline-none focus:border-brand-primary/60 transition-colors"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full mt-2 py-3.5 rounded-xl font-semibold text-white text-sm bg-brand-primary hover:brightness-110 active:scale-[0.98] transition-all duration-200 shadow-lg shadow-brand-primary/30"
-            >
-              Quero entrar no alpha →
-            </button>
-          </form>
+          ) : (
+            <>
+              <h3 className="text-lg font-semibold text-text-primary mb-1">Quero participar do alpha</h3>
+              <p className="text-sm text-text-secondary mb-6">Preencha e entraremos em contato em breve.</p>
 
-          <p className="text-[11px] text-text-secondary/50 text-center mt-4">
-            Sem spam. Entraremos em contato pelo WhatsApp ou e-mail informado.
-          </p>
+              <form className="space-y-3" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs text-text-secondary mb-1.5">Nome</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Seu nome"
+                      className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-text-secondary mb-1.5">Empresa</label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={form.company}
+                      onChange={handleChange}
+                      required
+                      placeholder="Nome do negócio"
+                      className={inputClass}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs text-text-secondary mb-1.5">WhatsApp</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    required
+                    placeholder="(11) 99999-9999"
+                    className={inputClass}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-text-secondary mb-1.5">E-mail</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="seu@email.com"
+                    className={inputClass}
+                  />
+                </div>
+
+                {status === 'error' && (
+                  <p className="text-xs text-red-400 text-center">
+                    Erro ao enviar. Tente novamente ou entre em contato diretamente.
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="w-full mt-2 py-3.5 rounded-xl font-semibold text-white text-sm bg-brand-primary hover:brightness-110 active:scale-[0.98] transition-all duration-200 shadow-lg shadow-brand-primary/30 disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {status === 'loading' ? 'Enviando...' : 'Quero entrar no alpha →'}
+                </button>
+              </form>
+
+              <p className="text-[11px] text-text-secondary/50 text-center mt-4">
+                Sem spam. Entraremos em contato pelo WhatsApp ou e-mail informado.
+              </p>
+            </>
+          )}
         </div>
 
         {/* Stats */}
