@@ -1,5 +1,74 @@
 const modules = [
   {
+    tag: 'iFood',
+    color: 'accent',
+    title: 'iFood automático — zero redigitação',
+    description:
+      'Pedido do iFood entra direto no sistema em menos de 1 segundo. Imprime na cozinha, atualiza status de volta ao iFood em cada etapa. Sem intervenção manual, sem erro de digitação.',
+    features: ['Pedido criado automático (PLACED)', 'Status enviado ao iFood: confirmado → pronto → saiu → entregue', 'Sync de cardápio em lote (até 100 itens)', 'Suporte a múltiplas lojas iFood'],
+    visual: (
+      <div className="space-y-3">
+        <div className="flex items-center gap-3 p-3 rounded-xl bg-surface-bg/60 border border-surface-border/30">
+          <div className="w-8 h-8 rounded-lg bg-red-500/20 border border-red-500/30 flex items-center justify-center text-red-400 font-bold text-xs shrink-0">iF</div>
+          <div className="flex-1 min-w-0">
+            <div className="text-[10px] font-semibold text-text-primary mb-0.5">Novo pedido iFood #7821</div>
+            <div className="text-[9px] text-text-secondary truncate">X-Bacon + Batata Frita · R$ 42,90</div>
+          </div>
+          <div className="text-[9px] font-medium px-2 py-0.5 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/30 shrink-0">Automático</div>
+        </div>
+        <div className="flex items-center gap-2 text-[10px] text-text-secondary px-1">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#22C55E" strokeWidth="1"/><path d="M3 5l1.5 1.5 2.5-2.5" stroke="#22C55E" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Comanda impressa na cozinha
+        </div>
+        <div className="space-y-1.5">
+          {['Confirmado', 'Em preparo', 'Pronto para entrega', 'Saiu para entrega'].map((s, i) => (
+            <div key={s} className="flex items-center gap-2 px-2">
+              <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${i < 3 ? 'bg-brand-accent' : 'bg-surface-border'}`} />
+              <span className={`text-[10px] ${i < 3 ? 'text-text-secondary' : 'text-text-secondary/40'}`}>{s}</span>
+              {i < 3 && <span className="text-[9px] text-brand-accent/70 ml-auto">✓ iFood</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    tag: 'PDV',
+    color: 'primary',
+    title: 'PDV com adicionais step-by-step',
+    description:
+      'Interface otimizada para toque. Busca por nome ou código de barras. Seleção de adicionais guiada por etapas — Tipo de Leite → Cobertura → Extras — com radio/checkbox e auto-avanço.',
+    features: ['Busca por nome, código interno ou código de barras', 'Stepper step-by-step por grupos configuráveis', 'Múltiplas formas de pagamento combinadas', 'Cupom impresso automaticamente ao finalizar'],
+    visual: (
+      <div className="space-y-3">
+        <div className="grid grid-cols-3 gap-1.5">
+          {[
+            { name: 'Latte', price: 'R$ 12', top: true },
+            { name: 'Cappuccino', price: 'R$ 14', top: false },
+            { name: 'Espresso', price: 'R$ 8', top: false },
+          ].map((p) => (
+            <div key={p.name} className="rounded-lg border border-surface-border/40 bg-surface-bg/60 p-2 text-center relative">
+              {p.top && <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 text-[8px] font-bold px-1.5 py-0.5 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/30">Top</div>}
+              <div className="text-[10px] font-medium text-text-primary mb-0.5">{p.name}</div>
+              <div className="text-[9px] text-brand-secondary">{p.price}</div>
+            </div>
+          ))}
+        </div>
+        <div className="rounded-xl border border-brand-primary/30 bg-brand-primary/5 p-3">
+          <div className="text-[9px] text-brand-primary font-semibold uppercase tracking-wide mb-2">Tipo de Leite (1 de 3)</div>
+          <div className="space-y-1.5">
+            {['Integral', 'Desnatado', 'Oat (aveia)'].map((l, i) => (
+              <div key={l} className={`flex items-center gap-2 px-2 py-1 rounded-lg text-[10px] ${i === 0 ? 'bg-brand-primary/20 text-text-primary font-medium' : 'text-text-secondary'}`}>
+                <div className={`w-3 h-3 rounded-full border shrink-0 ${i === 0 ? 'bg-brand-primary border-brand-primary' : 'border-surface-border'}`} />
+                {l} {i === 0 && <span className="ml-auto text-[8px] text-brand-primary/70">padrão</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     tag: 'Pedidos',
     color: 'primary',
     title: 'Gestão de pedidos',

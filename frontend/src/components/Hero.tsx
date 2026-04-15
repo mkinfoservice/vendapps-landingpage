@@ -23,33 +23,30 @@ export function Hero() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-sm text-brand-secondary mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
-          Plataforma em fase alpha — vagas limitadas
+          Sem cartão. Sem compromisso. 7 dias grátis.
         </div>
 
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6">
-          <span className="text-text-primary">Automação inteligente</span>
+          <span className="text-text-primary">Tudo que seu negócio</span>
           <br />
-          <span className="text-text-primary">para vender mais,</span>
+          <span className="text-text-primary">precisa para vender,</span>
           <br />
-          <span className="gradient-text-full">atender melhor</span>
-          <br />
-          <span className="text-text-primary">e entregar com eficiência.</span>
+          <span className="gradient-text-full">operar e crescer.</span>
         </h1>
 
         {/* Subheadline */}
         <p className="max-w-2xl mx-auto text-base sm:text-lg text-text-secondary leading-relaxed mb-10">
-          A vendApps centraliza pedidos, catálogo, entregas, financeiro e automações via WhatsApp
-          em uma única plataforma para o seu negócio crescer com organização.
+          PDV, catálogo online, iFood automático, impressão automática, WhatsApp, fidelidade, NFC-e e app do entregador — em um único sistema, sem instalar nada, acessível de qualquer celular.
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
-            href="#alpha"
+            href="#teste-gratis"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white text-sm bg-brand-primary hover:brightness-110 active:scale-95 transition-all duration-200 shadow-lg shadow-brand-primary/30"
           >
-            Quero testar no alpha
+            Começar teste gratuito
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
               <path fillRule="evenodd" d="M3 8a.5.5 0 01.5-.5h6.793L8.146 5.354a.5.5 0 11.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.293 8.5H3.5A.5.5 0 013 8z" clipRule="evenodd" />
             </svg>
@@ -147,10 +144,11 @@ export function Hero() {
         {/* Trust indicators */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-text-secondary/50 text-xs">
           {[
-            'Integração WhatsApp Business API',
-            'Multi-tenant',
-            'Rotas inteligentes',
-            'Painel em tempo real',
+            'Integração iFood automática',
+            'Impressão automática em tempo real',
+            'WhatsApp Business API oficial',
+            'NFC-e automática',
+            'App do entregador sem instalar',
           ].map((item) => (
             <div key={item} className="flex items-center gap-1.5">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">

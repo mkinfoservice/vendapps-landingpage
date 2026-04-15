@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { Logo } from './Logo'
 
 const navLinks = [
-  { label: 'Recursos', href: '#recursos' },
+  { label: 'Funcionalidades', href: '#recursos' },
   { label: 'Como funciona', href: '#como-funciona' },
-  { label: 'WhatsApp', href: '#whatsapp' },
-  { label: 'Negócios', href: '#negocios' },
+  { label: 'Delivery', href: '#delivery' },
+  { label: 'Planos', href: '#planos' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
 export function Navbar() {
@@ -34,10 +35,10 @@ export function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="#alpha"
+            href="#teste-gratis"
             className="text-sm font-medium px-4 py-2 rounded-lg border border-brand-primary/50 text-brand-primary hover:bg-brand-primary/10 transition-all duration-200"
           >
-            Entrar na lista alpha
+            Teste grátis — 7 dias
           </a>
         </div>
 
@@ -73,11 +74,11 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#alpha"
+            href="#teste-gratis"
             className="mt-2 text-sm font-medium px-4 py-2.5 rounded-lg border border-brand-primary/50 text-brand-primary hover:bg-brand-primary/10 transition-all text-center"
             onClick={() => setMenuOpen(false)}
           >
-            Entrar na lista alpha
+            Teste grátis — 7 dias
           </a>
         </div>
       )}

@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+declare global {
+  interface Window {
+    __vendappsPlano?: string
+  }
+}
 
 const WEB3FORMS_KEY = '14941864-c768-4c27-8764-7d28c080e897'
 
 const stats = [
-  { value: 'Alpha', label: 'Fase atual' },
-  { value: '100%', label: 'Focado em operação real' },
+  { value: '7 dias', label: 'Teste gratuito' },
+  { value: '100%', label: 'Web — sem instalar' },
+  { value: 'iFood', label: 'Integração inclusa' },
   { value: 'Multi-tenant', label: 'Arquitetura nativa' },
-  { value: 'WhatsApp', label: 'API oficial integrada' },
 ]
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
@@ -14,6 +20,12 @@ type Status = 'idle' | 'loading' | 'success' | 'error'
 export function CtaFinal() {
   const [status, setStatus] = useState<Status>('idle')
   const [form, setForm] = useState({ name: '', company: '', phone: '', email: '' })
+  const [selectedPlan, setSelectedPlan] = useState('')
+
+  useEffect(() => {
+    const plan = window.__vendappsPlano
+    if (plan) setSelectedPlan(plan)
+  }, [])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -23,17 +35,20 @@ export function CtaFinal() {
     e.preventDefault()
     setStatus('loading')
 
+    const plan = window.__vendappsPlano || selectedPlan || 'Não informado'
+
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `Nova inscrição alpha — ${form.name} (${form.company})`,
+          subject: `Novo teste gratuito solicitado — ${form.name} (${form.company}) · Plano: ${plan}`,
           name: form.name,
           email: form.email,
           phone: form.phone,
           company: form.company,
+          plano_interesse: plan,
         }),
       })
       const data = await res.json()
@@ -52,7 +67,7 @@ export function CtaFinal() {
     'w-full px-3.5 py-2.5 rounded-xl bg-surface-bg/60 border border-surface-border/60 text-text-primary text-sm placeholder:text-text-secondary/40 focus:outline-none focus:border-brand-primary/60 transition-colors'
 
   return (
-    <section id="alpha" className="relative py-24 overflow-hidden">
+    <section id="teste-gratis" className="relative py-24 overflow-hidden">
 
       {/* Background gradients */}
       <div className="absolute inset-0 pointer-events-none">
@@ -74,19 +89,19 @@ export function CtaFinal() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
 
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-brand-secondary text-sm mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-sm mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
-          Vagas limitadas para o teste alpha
+          7 dias grátis — sem cartão de crédito
         </div>
 
         {/* Headline */}
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.08] mb-6">
-          Sua operação pode<br />
-          <span className="gradient-text-full">vender mais com menos caos.</span>
+          Solicite um período de<br />
+          <span className="gradient-text-full">teste gratuito para sua loja.</span>
         </h2>
 
         <p className="max-w-xl mx-auto text-text-secondary text-base sm:text-lg leading-relaxed mb-10">
-          Conheça a vendApps e participe do teste alpha. Ajude a moldar uma plataforma construída para negócios reais.
+          Preencha abaixo e nossa equipe entra em contato para configurar seu sistema personalizado — sem custo, sem compromisso.
         </p>
 
         {/* Form */}
@@ -100,14 +115,16 @@ export function CtaFinal() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-text-primary mb-1">Inscrição recebida!</h3>
-                <p className="text-sm text-text-secondary">Entraremos em contato em breve pelo WhatsApp ou e-mail informado.</p>
+                <h3 className="text-lg font-semibold text-text-primary mb-1">Solicitação recebida!</h3>
+                <p className="text-sm text-text-secondary">Nossa equipe vai entrar em contato em breve pelo WhatsApp ou e-mail para configurar seu teste.</p>
               </div>
             </div>
           ) : (
             <>
-              <h3 className="text-lg font-semibold text-text-primary mb-1">Quero participar do alpha</h3>
-              <p className="text-sm text-text-secondary mb-6">Preencha e entraremos em contato em breve.</p>
+              <h3 className="text-lg font-semibold text-text-primary mb-1">Solicitar período de teste gratuito</h3>
+              <p className="text-sm text-text-secondary mb-6">
+                Preencha e entraremos em contato em até 1 dia útil.
+              </p>
 
               <form className="space-y-3" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -124,14 +141,14 @@ export function CtaFinal() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-text-secondary mb-1.5">Empresa</label>
+                    <label className="block text-xs text-text-secondary mb-1.5">Nome do negócio</label>
                     <input
                       type="text"
                       name="company"
                       value={form.company}
                       onChange={handleChange}
                       required
-                      placeholder="Nome do negócio"
+                      placeholder="Restaurante, cafeteria..."
                       className={inputClass}
                     />
                   </div>
@@ -161,6 +178,17 @@ export function CtaFinal() {
                   />
                 </div>
 
+                {/* Selected plan indicator */}
+                {selectedPlan && (
+                  <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-brand-primary/10 border border-brand-primary/30 text-sm">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6" stroke="#6C5CE7" strokeWidth="1" />
+                      <path d="M4.5 7l2 2 3-3" stroke="#6C5CE7" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className="text-text-secondary">Plano de interesse: <span className="text-brand-primary font-semibold">{selectedPlan}</span></span>
+                  </div>
+                )}
+
                 {status === 'error' && (
                   <p className="text-xs text-red-400 text-center">
                     Erro ao enviar. Tente novamente ou entre em contato diretamente.
@@ -172,7 +200,7 @@ export function CtaFinal() {
                   disabled={status === 'loading'}
                   className="w-full mt-2 py-3.5 rounded-xl font-semibold text-white text-sm bg-brand-primary hover:brightness-110 active:scale-[0.98] transition-all duration-200 shadow-lg shadow-brand-primary/30 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {status === 'loading' ? 'Enviando...' : 'Quero entrar no alpha →'}
+                  {status === 'loading' ? 'Enviando...' : 'Quero testar grátis por 7 dias →'}
                 </button>
               </form>
 

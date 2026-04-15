@@ -3,7 +3,7 @@ import { Logo } from './Logo'
 const links = {
   Produto: ['Recursos', 'Como funciona', 'WhatsApp', 'Módulos', 'Preços'],
   Negócios: ['Petshops', 'Delivery', 'Restaurantes', 'Lojas locais', 'Redes e franquias'],
-  Empresa: ['Sobre', 'Blog', 'Contato', 'Alpha'],
+  Empresa: ['Sobre', 'Blog', 'Contato', 'Planos'],
 }
 
 export function Footer() {
@@ -19,9 +19,9 @@ export function Footer() {
             <p className="text-sm text-text-secondary leading-relaxed mb-5">
               Plataforma de gestão comercial para negócios que vendem, atendem e entregam.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-xs text-brand-primary">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-xs text-brand-accent">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
-              Em fase alpha
+              7 dias grátis para sua loja
             </div>
           </div>
 

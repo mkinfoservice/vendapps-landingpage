@@ -1,39 +1,39 @@
 const businesses = [
   {
-    emoji: '🐾',
-    title: 'Petshops',
-    description: 'Gerencie agendamentos, vendas de produtos e serviços. Notifique o tutor automaticamente a cada etapa.',
-    tags: ['Catálogo', 'Pedidos', 'WhatsApp'],
-  },
-  {
     emoji: '🍔',
-    title: 'Delivery & Restaurantes',
-    description: 'Receba pedidos, organize filas de preparo e despache entregas com rotas otimizadas para seus motoboys.',
-    tags: ['Rotas', 'Pedidos', 'Tempo real'],
+    title: 'Restaurantes',
+    description: 'Gerencie mesas, delivery e balcão no mesmo painel. iFood integrado, impressão automática na cozinha e NFC-e no fechamento.',
+    tags: ['iFood', 'PDV', 'NFC-e'],
   },
   {
-    emoji: '🛒',
-    title: 'Lojas locais',
-    description: 'Catálogo digital, checkout simples e gestão de pedidos para lojas que atendem por WhatsApp ou online.',
-    tags: ['Catálogo', 'Checkout', 'Financeiro'],
+    emoji: '☕',
+    title: 'Cafeterias',
+    description: 'Step-by-step de adicionais aumenta o ticket médio automaticamente. Leite, cobertura, extras — o cliente escolhe e a comanda imprime.',
+    tags: ['Adicionais', 'PDV', 'Impressão'],
+  },
+  {
+    emoji: '🥙',
+    title: 'Lanchonetes',
+    description: 'QR Code na mesa, pedido pelo celular do cliente, comanda na cozinha. Sem garçom para anotar, sem erro de pedido.',
+    tags: ['QR Code', 'Mesa', 'Catálogo'],
   },
   {
     emoji: '📦',
-    title: 'Operações com entregadores',
-    description: 'Gerencie equipes de entrega, monte rotas inteligentes e acompanhe cada entregador em campo.',
-    tags: ['Rotas', 'Entregadores', 'Logística'],
+    title: 'Dark Kitchens',
+    description: 'Multi-canal em um painel: iFood, site próprio e WhatsApp. Rotas para entregadores com app no navegador do celular.',
+    tags: ['Multi-canal', 'Rotas', 'App entregador'],
   },
   {
-    emoji: '💬',
-    title: 'Negócios que vendem por WhatsApp',
-    description: 'Profissionalize sua operação. Saia do caos do manual e centralize tudo em uma plataforma real.',
-    tags: ['WhatsApp', 'Automação', 'Pedidos'],
+    emoji: '🛵',
+    title: 'Delivery e marmitarias',
+    description: 'Monte rotas otimizadas, entregadores navegam com Waze ou Google Maps e você acompanha tudo em tempo real.',
+    tags: ['Rotas', 'Waze', 'Tempo real'],
   },
   {
     emoji: '🏢',
     title: 'Redes e franquias',
-    description: 'Multi-tenant nativo. Gerencie várias unidades em uma única plataforma com controle centralizado.',
-    tags: ['Multiempresa', 'Painel', 'Escalável'],
+    description: 'Multi-tenant nativo. Cada unidade com seu sistema isolado, gerenciado do painel master. Escala sem complicar.',
+    tags: ['Multi-tenant', 'Master', 'Escalável'],
   },
 ]
 
@@ -58,11 +58,11 @@ export function BusinessTypes() {
             Para quem é
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-5">
-            Feito para negócios que<br />
-            <span className="gradient-text">vendem, entregam e atendem.</span>
+            Feito para quem vende comida,<br />
+            <span className="gradient-text">atende cliente e faz entrega.</span>
           </h2>
           <p className="max-w-lg mx-auto text-text-secondary text-base leading-relaxed">
-            Se o seu negócio tem pedidos, clientes e entregas — a vendApps foi feita para você.
+            De cafeteria a dark kitchen, de restaurante familiar a rede de franquias — o vendApps funciona do jeito que sua operação precisa.
           </p>
         </div>
 

@@ -160,10 +160,10 @@ export function HowItWorks() {
             Pronto para testar na prática?
           </p>
           <a
-            href="#alpha"
+            href="#teste-gratis"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white text-sm bg-brand-primary hover:brightness-110 active:scale-95 transition-all duration-200 shadow-lg shadow-brand-primary/30"
           >
-            Quero testar no alpha
+            Começar teste gratuito
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
               <path fillRule="evenodd" d="M3 8a.5.5 0 01.5-.5h6.793L8.146 5.354a.5.5 0 11.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L10.293 8.5H3.5A.5.5 0 013 8z" clipRule="evenodd" />
             </svg>
