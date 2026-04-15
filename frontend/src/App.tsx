@@ -4,11 +4,12 @@ import { Problem } from './components/Problem'
 import { Benefits } from './components/Benefits'
 import { Differentials } from './components/Differentials'
 import { Modules } from './components/Modules'
+import { HowItWorks } from './components/HowItWorks'
 import { ProfitSection } from './components/ProfitSection'
 import { DeliveryApp } from './components/DeliveryApp'
 import { WhatsAppSection } from './components/WhatsAppSection'
+import { LoyaltySection } from './components/LoyaltySection'
 import { SocialProof } from './components/SocialProof'
-import { HowItWorks } from './components/HowItWorks'
 import { BusinessTypes } from './components/BusinessTypes'
 import { PricingTable } from './components/PricingTable'
 import { FAQ } from './components/FAQ'
@@ -22,22 +23,25 @@ function App() {
       <main>
         <Hero />
         <Problem />
-        <Benefits />
+        <Benefits />          {/* #recursos       → Funcionalidades */}
         <Differentials />
         <Modules />
+        <HowItWorks />        {/* #como-funciona  → Como funciona   */}
         <ProfitSection />
         <div id="delivery">
-          <DeliveryApp />
+          <DeliveryApp />     {/* #delivery       → Delivery        */}
         </div>
         <WhatsAppSection />
-        <SocialProof />
-        <HowItWorks />
-        <BusinessTypes />
-        <PricingTable />
-        <div id="faq">
-          <FAQ />
+        <div id="fidelidade">
+          <LoyaltySection />  {/* #fidelidade     → Fidelidade      */}
         </div>
-        <CtaFinal />
+        <SocialProof />
+        <BusinessTypes />
+        <PricingTable />      {/* #planos         → Planos          */}
+        <div id="faq">
+          <FAQ />             {/* #faq            → FAQ             */}
+        </div>
+        <CtaFinal />          {/* #teste-gratis                     */}
       </main>
       <Footer />
     </div>
