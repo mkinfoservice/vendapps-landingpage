@@ -40,17 +40,17 @@ const messages = [
 
 export function WhatsAppSection() {
   return (
-    <section id="whatsapp" className="relative py-24 overflow-hidden">
+    <section id="whatsapp" className="relative py-24">
 
       {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-brand-accent/6 rounded-full blur-[120px]" />
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-brand-primary/6 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
           {/* Left: phone mockup */}
           <div className="flex justify-center lg:justify-start">

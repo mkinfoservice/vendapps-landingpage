@@ -61,16 +61,16 @@ const deliveryFeatures = [
 
 export function DeliveryApp() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-24">
 
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-brand-secondary/6 rounded-full blur-[120px]" />
         <div className="absolute top-1/3 right-0 w-[350px] h-[350px] bg-brand-primary/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
 
           {/* Left: Phone mockup */}
           <div className="flex justify-center">
