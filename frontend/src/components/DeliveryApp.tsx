@@ -61,7 +61,7 @@ const deliveryFeatures = [
 
 export function DeliveryApp() {
   return (
-    <section className="relative py-24">
+    <section className="relative py-16">
 
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-brand-secondary/6 rounded-full blur-[120px]" />
@@ -70,7 +70,7 @@ export function DeliveryApp() {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
           {/* Left: Phone mockup */}
           <div className="flex justify-center">
