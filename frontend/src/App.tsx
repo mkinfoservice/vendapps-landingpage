@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { Problem } from './components/Problem'
@@ -17,6 +18,24 @@ import { CtaFinal } from './components/CtaFinal'
 import { Footer } from './components/Footer'
 
 function App() {
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal')
+    if (!els.length) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible')
+            observer.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    els.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="min-h-screen bg-surface-bg text-text-primary">
       <Navbar />

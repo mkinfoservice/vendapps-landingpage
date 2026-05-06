@@ -4,9 +4,9 @@ export function Hero() {
 
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand-primary/10 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-brand-secondary/8 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-brand-accent/6 rounded-full blur-[80px]" />
+        <div className="orb-1 absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand-primary/10 rounded-full blur-[120px]" />
+        <div className="orb-2 absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-brand-secondary/8 rounded-full blur-[100px]" />
+        <div className="orb-3 absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-brand-accent/6 rounded-full blur-[80px]" />
       </div>
 
       {/* Grid pattern overlay */}
@@ -21,30 +21,30 @@ export function Hero() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 text-center">
 
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-sm text-brand-secondary mb-8">
+        <div className="hero-enter hero-d1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-sm text-brand-secondary mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
           Sem cartão. Sem compromisso. 7 dias grátis.
         </div>
 
         {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6">
+        <h1 className="hero-enter hero-d2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6">
           <span className="text-text-primary">Tudo que seu negócio</span>
           <br />
           <span className="text-text-primary">precisa para vender,</span>
           <br />
-          <span className="gradient-text-full">operar e crescer.</span>
+          <span className="gradient-text-live">operar e crescer.</span>
         </h1>
 
         {/* Subheadline */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg text-text-secondary leading-relaxed mb-10">
+        <p className="hero-enter hero-d3 max-w-2xl mx-auto text-base sm:text-lg text-text-secondary leading-relaxed mb-10">
           PDV, catálogo online, iFood automático, impressão automática, WhatsApp, fidelidade, NFC-e e app do entregador — em um único sistema, sem instalar nada, acessível de qualquer celular.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <div className="hero-enter hero-d4 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
             href="#teste-gratis"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white text-sm bg-brand-primary hover:brightness-110 active:scale-95 transition-all duration-200 shadow-lg shadow-brand-primary/30"
+            className="btn-glow-pulse w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white text-sm bg-brand-primary hover:brightness-110 active:scale-95 transition-all duration-200"
           >
             Começar teste gratuito
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
@@ -60,7 +60,7 @@ export function Hero() {
         </div>
 
         {/* Dashboard mockup */}
-        <div className="relative mx-auto max-w-4xl">
+        <div className="hero-enter hero-d5 relative mx-auto max-w-4xl">
           <div className="relative rounded-2xl border border-surface-border/60 bg-surface-card/50 backdrop-blur-sm overflow-hidden shadow-2xl shadow-black/40 glow-primary">
 
             {/* Mockup top bar */}
@@ -142,7 +142,7 @@ export function Hero() {
         </div>
 
         {/* Trust indicators */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-text-secondary/50 text-xs">
+        <div className="hero-enter hero-d6 mt-12 flex flex-wrap items-center justify-center gap-6 text-text-secondary/50 text-xs">
           {[
             'Integração iFood automática',
             'Impressão automática em tempo real',

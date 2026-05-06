@@ -124,7 +124,7 @@ export function Benefits() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Section header */}
-        <div className="text-center mb-16">
+        <div className="reveal text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-brand-primary text-xs font-medium mb-5">
             Tudo que você precisa
           </div>
@@ -144,7 +144,7 @@ export function Benefits() {
             return (
               <div
                 key={i}
-                className="group p-6 rounded-2xl border border-surface-border/60 bg-surface-card/30 hover:bg-surface-card/60 hover:border-surface-border transition-all duration-300 flex flex-col gap-4"
+                className={`reveal reveal-d${(i % 8) + 1} card-hover group p-6 rounded-2xl border border-surface-border/60 bg-surface-card/30 hover:bg-surface-card/60 hover:border-surface-border flex flex-col gap-4`}
               >
                 <div
                   className={`w-11 h-11 rounded-xl border flex items-center justify-center transition-all duration-300 ${c.border} ${c.bg} ${c.text} ${c.hover}`}
