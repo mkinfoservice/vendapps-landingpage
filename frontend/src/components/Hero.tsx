@@ -4,14 +4,14 @@ export function Hero() {
 
       {/* Background glow effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="orb-1 absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand-primary/10 rounded-full blur-[120px]" />
-        <div className="orb-2 absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-brand-secondary/8 rounded-full blur-[100px]" />
-        <div className="orb-3 absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-brand-accent/6 rounded-full blur-[80px]" />
+        <div className="orb-1 absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-brand-primary/20 rounded-full blur-[80px]" />
+        <div className="orb-2 absolute top-1/3 left-1/4 w-[350px] h-[350px] bg-brand-secondary/18 rounded-full blur-[60px]" />
+        <div className="orb-3 absolute bottom-1/4 right-1/4 w-[280px] h-[280px] bg-brand-accent/14 rounded-full blur-[50px]" />
       </div>
 
       {/* Grid pattern overlay */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="grid-breathe absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(#6C5CE7 1px, transparent 1px), linear-gradient(90deg, #6C5CE7 1px, transparent 1px)`,
           backgroundSize: '60px 60px',
@@ -22,7 +22,7 @@ export function Hero() {
 
         {/* Badge */}
         <div className="hero-enter hero-d1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-sm text-brand-secondary mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
+          <span className="pulse-dot w-1.5 h-1.5 rounded-full bg-brand-accent" />
           Sem cartão. Sem compromisso. 7 dias grátis.
         </div>
 
@@ -69,6 +69,10 @@ export function Hero() {
               <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
               <div className="w-3 h-3 rounded-full bg-green-500/60" />
               <div className="ml-4 flex-1 h-5 rounded bg-surface-border/40 max-w-[200px]" />
+              <div className="flex items-center gap-1.5 text-[10px] font-medium text-brand-accent ml-auto">
+                <span className="live-dot w-1.5 h-1.5 rounded-full bg-brand-accent" />
+                AO VIVO
+              </div>
             </div>
 
             {/* Mockup content */}
